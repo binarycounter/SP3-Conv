@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRR Mid/Side Encoder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <img src="SP3Logo.png"/><h1>BRR Mid/Side Encoder</h1>
+        <div id="drop-zone">
+            <p>Drag & Drop an audio file here</p>
+            <p>or</p>
+            <button id="browse-btn">Browse Files</button>
+        </div>
+        <input type="file" id="file-input" accept="audio/wav, audio/flac, audio/mpeg" hidden>
+        
+        <div id="settings-area">
+            <div class="setting-control">
+                <label for="mid-samplerate-select">Mid Channel Sample Rate</label>
+                <select id="mid-samplerate-select"></select>
+            </div>
+            <div class="setting-control">
+                <label for="side-samplerate-select">Side Channel Sample Rate</label>
+                <select id="side-samplerate-select"></select>
+            </div>
+        </div>
+
+        <div id="file-info" class="hidden">
+            <strong>File:</strong> <span id="file-name"></span>
+            <div id="audio-details"></div>
+            <div id="encoding-stats" class="hidden">
+                <hr>
+                <strong>Encoded Size:</strong> <span id="encoded-size"></span> KB<br>
+                <strong>Bitrate:</strong> <span id="bitrate"></span> KB/s
+            </div>
+        </div>
+        
+        <div id="status-area" class="hidden"></div>
+
+        <div id="results-area" class="hidden">
+            <div class="gauss-toggle">
+                <input type="checkbox" id="gauss-filter-toggle">
+                <label for="gauss-filter-toggle">Apply SNES Gaussian Filter on Preview</label>
+            </div>
+
+            <div class="channel-controls-container">
+                <div class="channel-control full-mix">
+                    <h3>Full Mix Preview</h3>
+                    <button id="play-full-btn" class="play-btn">▶ Play</button>
+                    <div class="download-links">
+                         <a href="#" id="download-full-wav-btn" class="download-btn wav">Download .wav</a>
+                    </div>
+                </div>
+                <div class="channel-control">
+                    <h3>Mid Channel</h3>
+                    <button id="play-mid-btn" class="play-btn">▶ Play</button>
+                    <div class="download-links">
+                        <a href="#" id="download-mid-brr-btn" class="download-btn brr" download>Download .brr</a>
+                        <a href="#" id="download-mid-wav-btn" class="download-btn wav">Download .wav</a>
+                    </div>
+                </div>
+                <div class="channel-control">
+                    <h3>Side Channel</h3>
+                    <button id="play-side-btn" class="play-btn">▶ Play</button>
+                    <div class="download-links">
+                        <a href="#" id="download-side-brr-btn" class="download-btn brr" download>Download .brr</a>
+                        <a href="#" id="download-side-wav-btn" class="download-btn wav">Download .wav</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="processing.js"></script>
+    <script src="brr.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
